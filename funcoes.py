@@ -44,7 +44,7 @@ def mms():
 
 #FILA M/M/1/K
 def mm1k():
-    pass
+    print ("Just a test")
 
 #FILA M/M/S/K
 def mmsk():
