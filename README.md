@@ -1,11 +1,11 @@
 # Programa de Filas
 Calcula as fumaceiras dos cálculos de Teoria das Filas da matéria Pesquisa Operacional.
 Os cálculos abordados são:
-  - Equações de Little 
-  - Sistema de Filas M/M/1 
-  - Sistema de Filas M/M/S 
+  - Equações de Little
+  - Sistema de Filas M/M/1
+  - Sistema de Filas M/M/S
   - Sistema de Filas M/M/1/K
-  - Sistema de Filas M/M/S/K 
+  - Sistema de Filas M/M/S/K
 
 
 # Como utilizar
@@ -21,5 +21,5 @@ Para começar a utilizar o programa é bem simples.
 
 # Créditos
 -> Ítalo Oliveira<br>
--> Andŕe Gomes<br>
+-> André Gomes<br>
 -> Bruno Trindade<br>

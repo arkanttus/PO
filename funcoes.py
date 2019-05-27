@@ -72,8 +72,6 @@ def mm1k():
 #FILA M/M/S/K
 def mmsk():
     print("FILA M/M/S/K\n")
-    pass
-    '''
     lamb = double(input("Lambda: "))
     u    = double(input("Mi: "))
     s    = int(input("S (atendentes):  "))
