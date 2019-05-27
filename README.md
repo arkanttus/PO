@@ -18,6 +18,10 @@ Para começar a utilizar o programa é bem simples.
   ```
   python3 main.py
   ```
+  - <b>Dica: </b> Caso queira mostrar o significado das variáveis durante a execução, adicione a flag <b>--ajuda</b> ao comando.
+  ```
+  python3 main.py --ajuda
+  ``` 
 
 # Créditos
 -> Ítalo Oliveira<br>

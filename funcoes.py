@@ -5,11 +5,11 @@ def exp(num):
     return e ** num
 
 #FILA M/M/1
-def mm1():
+def mm1(help):
     print("FILA M/M/1\n")
-    lamb = float(input("Lambda: "))
-    u    = float(input("Mi: "))
-    t    = float(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
+    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
+    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
+    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": ")))
     p    = lamb/u
     ls   = p/(1-p)
     lq   = (p**2)/(1-p)
@@ -18,15 +18,18 @@ def mm1():
     wst  = exp( (-t / ws) ) * 100 #funcao de euler
     wqt  = p * wst
 
-    print("\n P: {:.4f} \n Ls: {:.4f} \n Lq: {:.4f} \n Ws: {:.4f} \n Wq: {:.4f} \n Wst: {:.4f} % \n Wqt: {:.4f} % \n ".format(p,ls,lq,ws,wq,wst,wqt))
+    if help:
+        print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n Wst (Probabilidade de permanecer 't' unidades de tempo no sistema): {:.4f} % \n Wqt (Probabilidade de permanecer 't' unidades de tempo na fila): {:.4f} % \n".format(p,lq,ls,wq,ws, wst, wqt))
+    else:
+        print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n Ws(t): {:.4f} % \n Wq(t): {:.4f} % \n".format(p,lq,ls,wq,ws, wst, wqt))
 
 #FILA M/M/S
-def mms():
+def mms(help):
     print("FILA M/M/S\n")
-    lamb = float(input("Lambda: "))
-    u    = float(input("Mi: "))
-    S    = int(input("S (atendentes):  "))
-    t    = float(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
+    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
+    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
+    S    = int(input("S" + (" (atendentes):  " if help else ": ")))
+    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": ")))
     p    = lamb/(S*u)
 
     if p < 1:
@@ -46,15 +49,18 @@ def mms():
     wst  = ( exp(-(u*t)) * ( 1 + ((S*p)**p * p0 * (1 - exp(-u*t*(S-1-S*p))) ) / (math.factorial(S)*(1-p)*(S-1-S*p)) ) ) * 100
     wqt  = (( ( ((S*p)**S) * p0 ) / (math.factorial(S) * (1-p))) * exp( -S*u*t*(1-p) )) * 100
 
-    print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n Wst: {:.4f} % \n Wqt: {:.4f} % \n".format(p,lq,ls,wq,ws,p0, wst, wqt))
+    if help:
+        print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n p0 (Probabilidade de nao ter ninguem): {:.4f} \n Wst (Probabilidade de permanecer 't' unidades de tempo no sistema): {:.4f} % \n Wqt (Probabilidade de permanecer 't' unidades de tempo na fila): {:.4f} % \n".format(p,lq,ls,wq,ws,p0, wst, wqt))
+    else:
+        print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n Ws(t): {:.4f} % \n Wq(t): {:.4f} % \n".format(p,lq,ls,wq,ws,p0, wst, wqt))
 
 #FILA M/M/1/K
-def mm1k():
+def mm1k(help):
     print("FILA M/M/1/K\n")
-    lamb = float(input("Lambda: "))
-    u    = float(input("Mi: "))
-    t    = float(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
-    k    = int(input("K(Capacidade do sistema: "))
+    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
+    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
+    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": ")))
+    k    = int(input("K" + (" (capacidade do sistema): " if help else ": ")))
     p = lamb/u
     lambli = lamb*(1-(p*k))
 
@@ -69,14 +75,19 @@ def mm1k():
 
     print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n".format(p,lq,ls,wq,ws))
 
+    if help:
+        print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n".format(p,lq,ls,wq,ws))
+    else:
+        print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n".format(p,lq,ls,wq,ws))
+
 #FILA M/M/S/K
-def mmsk():
+def mmsk(help):
     print("FILA M/M/S/K\n")
-    lamb = float(input("Lambda: "))
-    u    = float(input("Mi: "))
-    s    = int(input("S (atendentes):  "))
-    k    = int(input("K(Capacidade do sistema: "))
-    t    = float(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
+    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
+    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
+    s    = int(input("S" + (" (atendentes):  " if help else ": ")))
+    k    = int(input("K" + (" (capacidade do sistema): " if help else ": ")))
+    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado): " if help else ": ")))
     p = lamb/(s*u)
     lambli = lamb*(1-(p*k))
     p0 = 0.0
@@ -91,7 +102,7 @@ def mmsk():
     else:
         #somatorio
         soma = 0.0
-        for n in range(0,s):
+        for n in range(0,s+1):
             soma += (s**s) / math.factorial(n)
 
         p0 =    ((s**s)/math.factorial(s))*(k-s) + soma
@@ -102,3 +113,7 @@ def mmsk():
     ls = lambli*ws
 
     print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n".format(p,lq,ls,wq,ws,p0))
+    if help:
+        print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n p0 (Probabilidade de nao ter ninguem): {:.4f} \n".format(p,lq,ls,wq,ws,p0))
+    else:
+        print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n".format(p,lq,ls,wq,ws,p0))
