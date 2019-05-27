@@ -72,11 +72,11 @@ def mm1k():
 #FILA M/M/S/K
 def mmsk():
     print("FILA M/M/S/K\n")
-    lamb = double(input("Lambda: "))
-    u    = double(input("Mi: "))
+    lamb = float(input("Lambda: "))
+    u    = float(input("Mi: "))
     s    = int(input("S (atendentes):  "))
     k    = int(input("K(Capacidade do sistema: "))
-    t    = double(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
+    t    = float(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
     p = lamb/(s*u)
     lambli = lamb*(1-(p*k))
     p0 = 0.0
