@@ -79,26 +79,26 @@ def mmsk():
     t    = double(input("Tempo (0, caso o tempo nao tenha sido informado):  "))
     p = lamb/(s*u)
     lambli = lamb*(1-(p*k))
-    p0 = 0
+    p0 = 0.0
 
     if p != 1:
-        soma = 0
+        soma = 0.0
         #somatorio
         for n in range(0,s+1):
             soma += (s*p)**n / math.factorial(n)
 
         p0 = ((( s**s * p**(s+1) ) / (math.factorial(s)*(1-p))) + soma ) ** (-1)
     else:
-        soma = 0
+        #somatorio
+        soma = 0.0
         for n in range(0,s):
             soma += (s**s) / math.factorial(n)
 
         p0 =    ((s**s)/math.factorial(s))*(k-s) + soma
 
-    lq = (( s**s * p**(s+1) ) / math.factorial(s)*((1-p)**2))*((1-p)*(k-s)*(p**(k-s))*p0
-    wq = (lq / lambli)
+    lq = (( s**s * p**(s+1) ) / math.factorial(s)*((1-p)**2))*((1-p)*(k-s)*(p**(k-s)))*p0
+    wq = lq/lambli
     ws = wq + 1/u
     ls = lambli*ws
 
     print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n".format(p,lq,ls,wq,ws,p0))
-    '''
