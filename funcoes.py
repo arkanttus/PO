@@ -5,7 +5,7 @@ def exp(num):
     return e ** num
 
 #FILA M/M/1
-def mm1(help):
+def mm1(help, ler_p):
     print("FILA M/M/1\n")
     lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
     u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
@@ -20,11 +20,26 @@ def mm1(help):
 
     if help:
         print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n Wst (Probabilidade de permanecer 't' unidades de tempo no sistema): {:.4f} % \n Wqt (Probabilidade de permanecer 't' unidades de tempo na fila): {:.4f} % \n".format(p,lq,ls,wq,ws, wst, wqt))
+
     else:
         print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n Ws(t): {:.4f} % \n Wq(t): {:.4f} % \n".format(p,lq,ls,wq,ws, wst, wqt))
 
+    if ler_p:
+        if help:
+            print("Calculo de Pn (Probabilidade de ter 'n' no sistema): ")
+        else:
+            print("Calculo de Pn: ")
+
+        while True:
+            try:
+                n = int(input("n: "))
+                pn = (p**n) * (1 - p) 
+                print("P{:d}: {:.4f} ".format(n, pn))
+            except ValueError:
+                break
+
 #FILA M/M/S
-def mms(help):
+def mms(help, ler_p):
     print("FILA M/M/S\n")
     lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
     u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
@@ -54,8 +69,22 @@ def mms(help):
     else:
         print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n Ws(t): {:.4f} % \n Wq(t): {:.4f} % \n".format(p,lq,ls,wq,ws,p0, wst, wqt))
 
+    """if ler_p:
+        if help:
+            print("Calculo de Pn (Probabilidade de ter 'n' no sistema): ")
+        else:
+            print("Calculo de Pn: ")
+
+        while True:
+            try:
+                n = int(input("n: "))
+                pn = (p**n) * (1 - p) 
+                print("P{:d}: {:.4f} ".format(n, pn))
+            except ValueError:
+                break"""
+
 #FILA M/M/1/K
-def mm1k(help):
+def mm1k(help, ler_p):
     print("FILA M/M/1/K\n")
     lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
     u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
@@ -83,8 +112,22 @@ def mm1k(help):
     else:
         print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f}".format(p,lq,ls,wq,ws,p0))
 
+    """if ler_p:
+        if help:
+            print("Calculo de Pn (Probabilidade de ter 'n' no sistema): ")
+        else:
+            print("Calculo de Pn: ")
+
+        while True:
+            try:
+                n = int(input("n: "))
+                pn = (p**n) * (1 - p) 
+                print("P{:d}: {:.4f} ".format(n, pn))
+            except ValueError:
+                break"""
+
 #FILA M/M/S/K
-def mmsk(help):
+def mmsk(help, ler_p):
     print("FILA M/M/S/K\n")
     lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
     u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
@@ -120,3 +163,17 @@ def mmsk(help):
         print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n p0 (Probabilidade de nao ter ninguem): {:.4f} \n".format(p,lq,ls,wq,ws,p0))
     else:
         print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n".format(p,lq,ls,wq,ws,p0))
+
+    """if ler_p:
+        if help:
+            print("Calculo de Pn (Probabilidade de ter 'n' no sistema): ")
+        else:
+            print("Calculo de Pn: ")
+
+        while True:
+            try:
+                n = int(input("n: "))
+                pn = (p**n) * (1 - p) 
+                print("P{:d}: {:.4f} ".format(n, pn))
+            except ValueError:
+                break"""
