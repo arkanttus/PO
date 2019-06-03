@@ -149,9 +149,8 @@ def mmsk(help, ler_p):
     print("FILA M/M/S/K\n")
     lamb = read("Lambda" + (" (taxa media de chegada): " if help else ": "), float)
     u    = read("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": "), float)
-    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": "), float)
+    s    = read("S" + (" (atendentes):  " if help else ": "), int)
     k    = read("K" + (" (capacidade do sistema): " if help else ": "), int)
-    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado): " if help else ": "), float)
 
     p = lamb/(s*u)
     p0 = 0.0
@@ -179,9 +178,9 @@ def mmsk(help, ler_p):
     ls = lambli*ws
 
     if help:
-        print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n p0 (Probabilidade de nao ter ninguem): {:.4f} \n".format(p,lq,ls,wq,ws,p0))
+        print("\n P (Probabilidade de se manter ocupado): {:.4f} \n Lq (Comprimento medio da fila): {:.4f} \n Ls (Comprimento medio do sistema): {:.4f} \n Wq (Tempo medio de espera na fila): {:.4f} \n Ws (Tempo medio de espera no sistema): {:.4f} \n p0 (Probabilidade de nao ter ninguem): {:.4f} \n lambda linha (Taxa de clientes DENTRO do sistema): {:.4f} \n".format(p,lq,ls,wq,ws,p0,lambli))
     else:
-        print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n".format(p,lq,ls,wq,ws,p0))
+        print("\n P: {:.4f} \n Lq: {:.4f} \n Ls: {:.4f} \n Wq: {:.4f} \n Ws: {:.4f} \n p0: {:.4f} \n lambda linha: {:.4f} \n".format(p,lq,ls,wq,ws,p0,lambli))
 
     if ler_p:
         if help:
