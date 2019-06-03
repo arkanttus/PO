@@ -34,7 +34,7 @@ def showMenu(args):
     print(" Escolha uma operacao:")
     print(" 1. MM1\n 2. MMS\n 3. MM1K\n 4. MMSK\n 0. Sair\n ")
 
-    op = int(input("Op >> "))
+    op = read("Op >> ", int)
     menu(op, args.ajuda, args.ler_p)
 
 

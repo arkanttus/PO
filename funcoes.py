@@ -4,12 +4,19 @@ def exp(num):
     e = 2.718281828
     return e ** num
 
+
+def read(str, func):
+    try:
+        return func(input(str))
+    except ValueError:
+        return read(str, func)
+
 #FILA M/M/1
 def mm1(help, ler_p):
     print("FILA M/M/1\n")
-    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
-    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
-    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": ")))
+    lamb = read("Lambda" + (" (taxa media de chegada): " if help else ": "), float)
+    u    = read("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": "), float)
+    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": "), float)
 
     p    = lamb/u
     ls   = p/(1-p)
@@ -42,10 +49,10 @@ def mm1(help, ler_p):
 #FILA M/M/S
 def mms(help, ler_p):
     print("FILA M/M/S\n")
-    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
-    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
-    S    = int(input("S" + (" (atendentes):  " if help else ": ")))
-    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": ")))
+    lamb = read("Lambda" + (" (taxa media de chegada): " if help else ": "), float)
+    u    = read("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": "), float)
+    S    = read("S" + (" (atendentes):  " if help else ": "), int)
+    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": "), float)
 
     p    = lamb/(S*u)
 
@@ -92,10 +99,10 @@ def mms(help, ler_p):
 #FILA M/M/1/K
 def mm1k(help, ler_p):
     print("FILA M/M/1/K\n")
-    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
-    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
-    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": ")))
-    k    = int(input("K" + (" (capacidade do sistema): " if help else ": ")))
+    lamb = read("Lambda" + (" (taxa media de chegada): " if help else ": "), float)
+    u    = read("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": "), float)
+    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": "), float)
+    k    = read("K" + (" (capacidade do sistema): " if help else ": "), int)
 
     p = lamb/u
     p0 = 0.0
@@ -140,11 +147,11 @@ def mm1k(help, ler_p):
 #FILA M/M/S/K
 def mmsk(help, ler_p):
     print("FILA M/M/S/K\n")
-    lamb = float(input("Lambda" + (" (taxa media de chegada): " if help else ": ")))
-    u    = float(input("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": ")))
-    s    = int(input("S" + (" (atendentes):  " if help else ": ")))
-    k    = int(input("K" + (" (capacidade do sistema): " if help else ": ")))
-    t    = float(input("Tempo" + (" (0, caso o tempo nao tenha sido informado): " if help else ": ")))
+    lamb = read("Lambda" + (" (taxa media de chegada): " if help else ": "), float)
+    u    = read("Mi" + (" (taxa media de clientes atendidos por servidor): " if help else ": "), float)
+    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado):  " if help else ": "), float)
+    k    = read("K" + (" (capacidade do sistema): " if help else ": "), int)
+    t    = read("Tempo" + (" (0, caso o tempo nao tenha sido informado): " if help else ": "), float)
 
     p = lamb/(s*u)
     p0 = 0.0
@@ -186,10 +193,10 @@ def mmsk(help, ler_p):
             try:
                 n = int(input("n: "))
                 pn = 0.0
-                if n <= S :
-                    pn = (((S*p)**n)/math.factorial(n))*p0
-                elif n <= k
-                    pn = (((S**S)*(p**n))/math.factorial(S))*p0                                    
+                if n <= s:
+                    pn = (((s*p)**n)/math.factorial(n))*p0
+                elif n <= k:
+                    pn = (((s**s)*(p**n))/math.factorial(s))*p0                                    
                 print("P{:d}: {:.4f} ".format(n, pn))
             except ValueError:
                 break
