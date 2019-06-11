@@ -5,7 +5,7 @@ from funcoes import *
 
 def clear():
     os.system("\n\n\n")
-    os.system("clear")
+    os.system("clear || cls")
 
 def menu(op, help, ler_p):
   print("\n***********************************")
