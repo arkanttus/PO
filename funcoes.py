@@ -170,7 +170,7 @@ def mmsk(help, ler_p):
 
         p0 = (((s**s)/math.factorial(s))*(k-s) + soma)**(-1)
 
-    pK = ((p**(k))*(1-p))/(1-(p**(k+1)))
+    pK = (((s**s)*(p**k))/math.factorial(s))*p0
     lambli = lamb*(1-(pK))
     lq = (( s**s * p**(s+1) ) / math.factorial(s)*((1-p)**2))*((1-p)*(k-s)*(p**(k-s)))*p0
     wq = lq/lambli
